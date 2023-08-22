@@ -1,0 +1,32 @@
+NUMPY: NumPy is a Python library used for working with arrays(arrays: Arrays are used to store multiple values in one single variable)
+
+
+Why do we use Numpy?
+In Python we have lists that serve the purpose of arrays, but they are slow to process.
+
+NumPy aims to provide an array object that is up to 50x faster than traditional Python lists.
+
+The array object in NumPy is called ndarray, it provides a lot of supporting functions that make working with ndarray very easy.
+
+importing numpy:
+
+  ---> import numpy as np
+
+Numpys creating arrays:
+Create a NumPy ndarray Object:
+
+NumPy is used to work with arrays. The array object in NumPy is called ndarray.
+We can create a NumPy ndarray object by using the array() function.
+
+---->import numpy as np
+     arr = np.array([1,2,4,5])
+     print(arr)
+     print(type(arr))--->< type of the object passed to it>
+
+     o/p:[12345]                         
+         <class'numpy.ndarray'>
+----->To create an ndarray, we can pass a list, tuple or any array-like object into the array() method, and it will be converted into an ndarray
+
+Dimensions in Arrays:
+A dimension in arrays is one level of array depth (nested arrays)(nested arrays:are arrays that have arrays as their elements)
+0-D Arrays:
