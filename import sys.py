@@ -19,5 +19,7 @@ print("\nName of Python script:", sys.argv[0])
 
 #for i in range(1, n):
 	#Sum += int(sys.argv[i])
+
+sys.path
 	
 #print("\n\nResult:", Sum)
