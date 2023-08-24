@@ -1,0 +1,223 @@
+SYS MODULE:
+        In python sys is a built-in module that provides access to some system-specific functionalities.it is useful for interacting with python interpreter
+  and underlying operating system.
+sys module provides information about the python runtime environment.
+
+FUNCTIONS OF SYS MODULE:
+
+ 1.importing sys module and checking the version
+    
+    import sys
+print(sys.version)
+
+ 2.sys.path:
+           sys.path is a built-in variable within the sys module that returns the list of directories that the interpreter will search for the required    module.When a module is imported within a Python file, the interpreter first searches for the specified module among its built-in modules. If not found it looks through the list of directories defined by sys.path.
+
+sys.path
+for i in sys.path:
+    print(i)----->by using for loop will get files in order 
+
+3.sys.stdin:
+          stdin stands for "standard input" and is a part of the standard I/O streams in a computer program. It is used to read input from the user or another program. In Python, the sys.stdin object represents the standard input stream, which is connected to the terminal or console by default. 
+
+
+4.sys.stdout:
+           stdout stands for "standard output" and is a part of the standard I/O streams in a computer program. It's used to display the output of your program to the user or to other programs. In Python, the sys.stdout object represents the standard output stream, which is connected to the terminal or console by default.
+
+def main():
+    # Read input from stdin
+    print("Enter your name:")
+    name = sys.stdin.readline().strip()
+
+    # Write output to stdout
+    sys.stdout.write("Hello, " + name + "!@\n")
+    sys.stdout.flush()  # Flush the output buffer to ensure immediate display
+
+if __name__ == "__main__":
+    main()
+
+o/p:enter your name: good morning
+hello good morning!@
+
+5.sys.stderr:
+           stderr stands for "standard error" and is another part of the standard I/O streams in a computer program. It's used to display error messages or diagnostic information. In Python, the sys.stderr object represents the standard error stream, which is connected to the terminal or console by default, just like sys.stdout.
+
+def main():
+    try:
+        # Some code that might raise an exception
+        result = 10 / 0 # This will raise a ZeroDivisionError
+    except Exception as e:
+        # Writing error message to stderr
+        sys.stderr.write(f"An error occurred: {str(e)}\n")
+        sys.stderr.flush()  # Flush the error output buffer
+
+if __name__ == "__main__":
+    main()
+
+o/p: zeroDivisionError
+
+6.sys.argv:
+         Command-line arguments are those which are passed during the calling of the program along with the calling statement. To achieve this using the sys module, the sys module provides a variable called sys.argv. It’s main purpose are:
+
+It is a list of command-line arguments.
+len(sys.argv) provides the number of command-line arguments.
+sys.argv[0] is the name of the current Python script
+
+def main():
+    # Print the name of the script
+    script_name = sys.argv[0]
+    print("Script name:", script_name)
+
+    # Print the total number of arguments
+    num_arguments = len(sys.argv) - 1  # Subtract 1 for the script name
+    print("Number of arguments:", num_arguments)
+
+    # Print the individual arguments
+    if num_arguments > 0:
+        print("Arguments:")
+        for index, argument in enumerate(sys.argv[1:], start=1):
+            print(f"Argument {index}: {argument}")
+
+if __name__ == "__main__":
+    main()
+o/p:
+   Script name: C:\Users\ThinkPad\PycharmProjects\pythonflask\stdin.py(current python script)
+   Number of arguments: 0
+
+   or
+
+print(len(sys.argv))---->1( provides the number of command-line arguments)
+print(sys.argv[0])--->prints the current python script
+
+7.sys.exit:
+The sys.exit() function in Python is used to exit the program, terminating its execution. It can be particularly useful for stopping the program when certain conditions are met or when an error occurs. You can optionally provide an exit status code as an argument to indicate the reason for the program's termination. 
+
+
+
+def main():
+    try:
+        value = int(input("Enter a number: "))
+        if value < 0:
+            print("Number must be positive")
+            sys.exit(1)  # Exit with status code 1 (indicating an error)
+        result = 10 / value
+        print("Result:", result)
+    except ValueError:
+        print("Invalid input")
+        sys.exit(1)  # Exit with status code 1 (indicating an error)
+    except ZeroDivisionError:
+        print("Cannot divide by zero")
+        sys.exit(1)  # Exit with status code 1 (indicating an error)
+
+if __name__ == "__main__":
+    main()
+o/p:enter a number:-1
+    number must be postive
+     or
+    enter a number:ghju
+      invalid input
+8.sys.getrecursionlimit:	
+                   sys.setrecursionlimit() method is used to set the maximum depth of the Python interpreter stack to the required limit.
+
+import sys
+
+# to find the current recursion limit
+limit = sys.getrecursionlimit()
+
+# Print the current limit
+print('Before changing, limit of stack =', limit)
+
+# New limit
+Newlimit = 300
+
+# Using sys.setrecursionlimit() method
+sys.setrecursionlimit(Newlimit)
+
+# Using sys.getrecursionlimit() method
+# to find the current recursion limit
+limit = sys.getrecursionlimit()
+
+# Print the current limit
+print('After changing, limit of stack =', limit)
+
+o/p:Before changing, limit of stack = 1000
+    After changing, limit of stack = 300
+
+9.sys.getrecursionlimit:sys.getrecursionlimit() method is used to find the current recursion limit of the interpreter or to find the maximum depth of the Python interpreter stack.
+  
+ import sys
+
+# Using sys.getrecursionlimit() method
+limit = sys.getrecursionlimit()
+
+# Print the result
+print(limit)
+
+# Python program to demonstrate
+# sys.exit()
+
+o/p:300
+
+10.sys.settrace:
+             The sys.settrace() function in Python is a debugging aid provided by the sys module. It allows you to set a trace function that gets called for each line of code executed in a program. This feature is mainly used for debugging and profiling purposes to gain insight into the execution flow of a program, track function calls, monitor variables, and more.
+
+import sys
+
+def trace_func(frame, event, arg):
+    print(f"Event: {event}, Function: {frame.f_code.co_name}, Line: {frame.f_lineno}")
+    return trace_func
+
+def foo():
+    print("Inside foo")
+
+def bar():
+    print("Inside bar")
+    foo()
+
+sys.settrace(trace_func)
+bar()
+sys.settrace(None)  # Disable tracing
+
+o/p:Event: call, Function: bar, Line: 120
+Event: line, Function: bar, Line: 121
+Inside bar
+Event: line, Function: bar, Line: 122
+Event: call, Function: foo, Line: 117
+Event: line, Function: foo, Line: 118
+Inside foo
+Event: return, Function: foo, Line: 118
+Event: return, Function: bar, Line: 122
+
+11.sys.Maxsize: 
+             
+The sys.maxsize constant in Python is used to determine the maximum allowable size for data structures like lists, arrays, and other sequences that can be indexed. It is particularly useful when you want to write code that is compatible with both 32-bit and 64-bit systems, as the maximum index size can vary depending on the architecture.
+
+import sys
+
+if sys.maxsize > 2**32:
+    print("Running on a 64-bit system")
+else:
+    print("Running on a 32-bit system")
+
+print("Maxsize:", sys.maxsize)
+
+o/p:Running on a 64-bit system
+    Maxsize: 9223372036854775807
+
+
+(In this example, the code checks whether the value of sys.maxsize is greater than 2**32. If it is, it prints that the system is running on a 64-bit system. Otherwise, it prints that the system is running on a 32-bit system. It then prints the actual value of sys.maxsize.  sys.maxsize is useful for determining the maximum possible size of data structures, it doesn't necessarily represent the actual available memory on your system)
+
+12. sys.getdefaultencoding:
+                    In Python, the sys.getdefaultencoding() function is used to retrieve the current default string encoding used by the Python interpreter. String encoding determines how characters are represented as bytes in memory and when they are written to files or sent over the network.
+
+import sys
+
+# Using sys.getdefaultencoding() method
+encoding = sys.getdefaultencoding()
+
+# Print the current string encoding used
+print(encoding)
+
+o/p:utf-8
+
+(UTF-8 (Unicode Transformation Format-8) is a widely used character encoding that represents Unicode characters using a variable number of bytes. Unicode is a character encoding standard that aims to encompass all characters from all human languages and scripts, as well as various symbols and special characters)
