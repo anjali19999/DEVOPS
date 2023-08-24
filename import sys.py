@@ -2,7 +2,7 @@
 # command line arguments
 
 import sys
-
+sys.path
 # total arguments
 n = len(sys.argv)
 print("Total arguments passed:", n)
