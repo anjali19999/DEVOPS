@@ -1,0 +1,38 @@
+1.Create a report that shows the CategoryNameand Description from the categories table sorted by CategoryName?????
+ans:
+  select categoryName,Description
+  from Categories;
+
+2.Create  a report that shows the ContactName, CompanyName, ContactTitle  and Phonenumberfrom the customers tablesorted by Phone??
+ans:
+    select contactName,companyName,contactTitle,phone
+    from customers
+    order by phone;
+3.Create  a  report  that  shows  the capitalizedFirstNameand  capitalized LastName  renamedas  FirstName  and Lastname respectivelyand HireDatefrom the employees table sorted from the newest to the oldest employee??
+ans: 
+     SELECT UPPER(FirstName) AS FirstName, UPPER(LastName) AS LastName, HireDate
+     FROM employees
+     ORDER BY HireDate DESC;
+4.Create a report that shows thetop 10OrderID, OrderDate, ShippedDate, CustomerID, Freightfromthe orders table sortedby Freight in descending order??
+   ans:
+       select top 10 OrderID, OrderDate,ShippedDate,CustomerID,Freight
+      from Orders
+      order by Freight DESC;
+5.Create a report that shows all the CustomerID inlowercaseletter and renamed as IDfrom the customers table??
+  ans:
+      SELECT LOWER(CustomerID) AS ID
+      FROM customers;
+6.Create  a  report  that  shows  the  CompanyName,  Fax,  Phone,Country, HomePage  fromthe  suppliers  table  sorted  by  the Country in descending order 
+       then  by CompanyName in ascending order???
+    
+   ans:
+    select CompanyName,Fax,phone,Country,HomePage
+    from Suppliers
+    Order by Country DESC, CompanyName ASC; 
+7.Create a report that shows CompanyName,ContactNameof all customers from ‘Buenos Aires'only????
+     
+   ans:
+      select CompanyName, ContactName
+      from customers
+      where City='Buenos Aires';
+   
